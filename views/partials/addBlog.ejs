@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blog | BlogSpace</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7f2;
+            color: #243124;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #708a4c, #90e76e);
+            color: white;
+            padding: 45px 20px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            margin: 0;
+            color: #e3f3df;
+        }
+
+        .blog-container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 18px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 9px;
+        }
+
+        .form-control {
+            padding: 12px 14px;
+            border: 1px solid #d9e2d7;
+            border-radius: 9px;
+        }
+
+        .form-control:focus {
+            border-color: #508a4c;
+            box-shadow: 0 0 0 3px rgba(80, 138, 76, 0.12);
+        }
+
+        textarea.form-control {
+            min-height: 230px;
+            resize: vertical;
+        }
+
+        .help-text {
+            font-size: 13px;
+            color: #758075;
+            margin-top: 7px;
+        }
+
+        .btn-publish {
+            background: #508a4c;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 9px;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+
+        .btn-publish:hover {
+            background: #3c7039;
+            color: white;
+        }
+
+        .btn-cancel {
+            padding: 12px 22px;
+            border: 1px solid #d5ddd3;
+            border-radius: 9px;
+            color: #526052;
+            text-decoration: none;
+        }
+
+        .btn-cancel:hover {
+            background: #f1f5ef;
+        }
+
+        @media (max-width: 576px) {
+            .blog-card {
+                padding: 22px 18px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <%- include('nav') %>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Create a New Blog</h1>
+        <p>Share your thoughts, ideas, and stories with the world.</p>
+    </header>
+
+    <!-- Add Blog Form -->
+    <main class="blog-container">
+        <div class="blog-card">
+
+            <form action="/blog" method="POST" enctype="multipart/form-data">
+
+                <!-- Blog Title -->
+                <div class="mb-4">
+                    <label for="title" class="form-label">
+                        Blog Title
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        name="title"
+                        placeholder="Enter an engaging blog title"
+                        maxlength="150"
+                        required
+                    >
+                </div>
+
+                <!-- Cover Image -->
+                <div class="mb-4">
+                    <label for="coverImage" class="form-label">
+                        Cover Image
+                    </label>
+
+                    <input
+                        type="file"
+                        class="form-control"
+                        id="coverImage"
+                        name="coverImage"
+                        accept="image/*"
+                    >
+
+                    <p class="help-text">
+                        Select an image for your blog cover.
+                    </p>
+                </div>
+
+                <!-- Blog Content -->
+                <div class="mb-4">
+                    <label for="body" class="form-label">
+                        Blog Content
+                    </label>
+
+                    <textarea
+                        class="form-control"
+                        id="body"
+                        name="body"
+                        placeholder="Write your blog content here..."
+                        required
+                    ></textarea>
+
+                    <p class="help-text">
+                        Write something informative, useful, or inspiring.
+                    </p>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex flex-wrap gap-3 justify-content-end">
+                    <a href="/" class="btn-cancel">
+                        Cancel
+                    </a>
+
+                    <button type="submit" class="btn-publish">
+                        Publish Blog
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
